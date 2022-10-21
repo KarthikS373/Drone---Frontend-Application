@@ -1,10 +1,10 @@
 // reference link : https://docs.expo.dev/versions/latest/sdk/gyroscope/
 
-import React, { useState, useEffect } from 'react';
-import { Text, TouchableOpacity, View } from 'react-native';
-import { Gyroscope } from 'expo-sensors';
-import styles from '../styles/sensors';
-import { round } from '../utils/round';
+import React, { useState, useEffect } from "react";
+import { Text, TouchableOpacity, View } from "react-native";
+import { Gyroscope } from "expo-sensors";
+import styles from "../styles/sensors";
+import { round } from "../utils/round";
 
 export default function gyroscope() {
   const [data, setData] = useState({
@@ -24,7 +24,7 @@ export default function gyroscope() {
 
   const _subscribe = () => {
     setSubscription(
-      Gyroscope.addListener(gyroscopeData => {
+      Gyroscope.addListener((gyroscopeData) => {
         setData(gyroscopeData);
       })
     );
@@ -48,10 +48,16 @@ export default function gyroscope() {
         x: {round(x)} y: {round(y)} z: {round(z)}
       </Text>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity onPress={subscription ? _unsubscribe : _subscribe} style={styles.button}>
-          <Text>{subscription ? 'On' : 'Off'}</Text>
+        <TouchableOpacity
+          onPress={subscription ? _unsubscribe : _subscribe}
+          style={styles.button}
+        >
+          <Text>{subscription ? "On" : "Off"}</Text>
         </TouchableOpacity>
-        <TouchableOpacity onPress={_slow} style={[styles.button, styles.middleButton]}>
+        <TouchableOpacity
+          onPress={_slow}
+          style={[styles.button, styles.middleButton]}
+        >
           <Text>Slow</Text>
         </TouchableOpacity>
         <TouchableOpacity onPress={_fast} style={styles.button}>
