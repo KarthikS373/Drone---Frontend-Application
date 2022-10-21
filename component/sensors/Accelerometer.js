@@ -1,12 +1,12 @@
-// reference link : https://docs.expo.dev/versions/latest/sdk/gyroscope/
+// Reference link -> https://docs.expo.dev/versions/latest/sdk/accelerometer/
 
 import React, { useState, useEffect } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
-import { Gyroscope } from "expo-sensors";
-import styles from "../styles/sensors";
-import { round } from "../utils/round";
+import { Accelerometer } from "expo-sensors";
+import styles from "../../styles/sensors";
+import { round } from "../../utils/round";
 
-export default function gyroscope() {
+export default () => {
   const [data, setData] = useState({
     x: 0,
     y: 0,
@@ -15,17 +15,17 @@ export default function gyroscope() {
   const [subscription, setSubscription] = useState(null);
 
   const _slow = () => {
-    Gyroscope.setUpdateInterval(1000);
+    Accelerometer.setUpdateInterval(1000);
   };
 
   const _fast = () => {
-    Gyroscope.setUpdateInterval(16);
+    Accelerometer.setUpdateInterval(16);
   };
 
   const _subscribe = () => {
     setSubscription(
-      Gyroscope.addListener((gyroscopeData) => {
-        setData(gyroscopeData);
+      Accelerometer.addListener((accelerometerData) => {
+        setData(accelerometerData);
       })
     );
   };
@@ -43,7 +43,9 @@ export default function gyroscope() {
   const { x, y, z } = data;
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Gyroscope:</Text>
+      <Text style={styles.text}>
+        Accelerometer: (in Gs where 1 G = 9.81 m s^-2)
+      </Text>
       <Text style={styles.text}>
         x: {round(x)} y: {round(y)} z: {round(z)}
       </Text>
@@ -66,4 +68,4 @@ export default function gyroscope() {
       </View>
     </View>
   );
-}
+};

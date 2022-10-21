@@ -4,7 +4,7 @@ import { Camera, CameraType } from "expo-camera";
 import { useState } from "react";
 import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export default function camera() {
+export default () => {
   const [type, setType] = useState(CameraType.back);
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const [Status, useStatus] = useState(false);
@@ -51,7 +51,7 @@ export default function camera() {
       </Text>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {

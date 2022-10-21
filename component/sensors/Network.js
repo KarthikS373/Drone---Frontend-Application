@@ -5,7 +5,7 @@ import { Text, TouchableOpacity, View } from "react-native";
 import NetInfo from "@react-native-community/netinfo";
 import styles from "../styles/sensors";
 
-function network() {
+export default () => {
   const [net, setNet] = useState(false);
 
   useEffect(() => {
@@ -20,5 +20,4 @@ function network() {
       <Text style={styles.text}>{net ? "True" : "False"}</Text>
     </View>
   );
-}
-export default network;
+};

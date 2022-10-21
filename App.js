@@ -1,31 +1,39 @@
-import Gryoscope from "./component/Gyroscope";
-import Accelerometer from "./component/Accelerometer";
-import Camera from "./component/Camera";
-import Network from "./component/Network";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import { SafeAreaView, ScrollView, StyleSheet } from "react-native";
-import Proximity from "./component/Proximity";
-import Storage from "./component/Storage";
+import HomeScreen from "./screens/HomeScreen";
+import CheckScreen from "./screens/CheckScreen";
+import HeaderTitle from "./component/HeaderTitle";
+import { StatusBar } from "expo-status-bar";
 
-export default function App() {
+const Stack = createNativeStackNavigator();
+
+export default () => {
   return (
-    <SafeAreaView style={styles.container}>
-      <ScrollView>
-        <Gryoscope />
-        <Accelerometer />
-        <Network />
-        <Camera />
-        <Storage />
-        {/* <Proximity /> */}
-      </ScrollView>
-    </SafeAreaView>
+    <NavigationContainer>
+      <StatusBar style="light" />
+      <Stack.Navigator initialRouteName="check">
+        <Stack.Screen
+          name="home"
+          component={HomeScreen}
+          options={{
+            headerShown: false,
+          }}
+        />
+        <Stack.Screen
+          name="check"
+          component={CheckScreen}
+          options={{
+            headerTitle: (props) => <HeaderTitle {...props} />,
+            headerStyle: {
+              backgroundColor: "#181818",
+            },
+            headerTitleStyle: {
+              color: "#B3B3B3",
+            },
+          }}
+        />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
-}
-
-const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    flex: 1,
-    justifyContent: "center",
-  },
-});
+};

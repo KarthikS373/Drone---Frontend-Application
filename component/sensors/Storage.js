@@ -3,13 +3,15 @@ import { View, Text } from "react-native";
 import React, { useEffect, useState } from "react";
 import * as FileSystem from "expo-file-system";
 
-const Storage = () => {
+export default () => {
   const [diskAnalysis, setDiskAnalysis] = useState(null);
 
   useEffect(() => {
     FileSystem.getFreeDiskStorageAsync()
       .then((freeDiskStorage) => {
-        setDiskAnalysis(`${(freeDiskStorage / (1024 * 1024 * 1000)).toPrecision(4)} GB left`);
+        setDiskAnalysis(
+          `${(freeDiskStorage / (1024 * 1024 * 1000)).toPrecision(4)} GB left`
+        );
       })
       .catch((err) => {
         setDiskAnalysis(null);
@@ -25,5 +27,3 @@ const Storage = () => {
     </View>
   );
 };
-
-export default Storage;

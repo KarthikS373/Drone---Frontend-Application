@@ -3,7 +3,7 @@
 import { View, Text } from "react-native";
 import React, { useEffect, useState } from "react";
 
-const ProximitySensor = () => {
+export default () => {
   const [proximity, setProximity] = useState(0);
 
   useEffect(() => {}, []);
@@ -14,5 +14,3 @@ const ProximitySensor = () => {
     </View>
   );
 };
-
-export default ProximitySensor;
