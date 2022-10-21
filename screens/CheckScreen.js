@@ -1,10 +1,17 @@
 import { Text, SafeAreaView, StyleSheet, ScrollView } from "react-native";
 import React from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import Check from "../component/Check";
 import { Checks } from "../utils/constants";
+import { promptCameraPermission } from "../utils/askPermissions";
+import { camera_granted } from "../redux/actions/permissions";
 
 export default (props) => {
+  const dispatch = useDispatch();
+  const camera = useSelector((store) => store.permissions.camera);
+  console.log(camera);
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView
@@ -12,15 +19,28 @@ export default (props) => {
         showsHorizontalScrollIndicator={false}
         showsVerticalScrollIndicator={false}
       >
-        <Text>CheckScreen</Text>
-        {Checks.map((item) => (
-          <Check
-            key={item.id}
-            result={item.id % 2 == 0 ? true : false}
-            title={item.name}
-            desc={item.desc}
-          />
-        ))}
+        <Check
+          onClick={
+            camera
+              ? () => alert("Working")
+              : () => {
+                console.log(camera)
+                  promptCameraPermission()
+                    .then((res) => {
+                      console.log(res);
+                      dispatch(camera_granted(true));
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                      dispatch(camera_granted(false));
+                    });
+                }
+          }
+          result={camera}
+          title={Checks[0].name}
+          desc={Checks[0].desc}
+          key={Checks[0].id}
+        />
       </ScrollView>
     </SafeAreaView>
   );

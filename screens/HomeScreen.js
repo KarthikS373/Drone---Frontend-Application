@@ -9,8 +9,25 @@ import {
   Text,
   View,
 } from "react-native";
+import { useDispatch } from "react-redux";
+
+import checkPermissions from "../utils/checkPermissions";
+import { camera_granted } from "../redux/actions/permissions";
 
 export default (props) => {
+  const dispatch = useDispatch();
+
+  checkPermissions("CAMERA")
+    .then((res) => {
+      dispatch(camera_granted(true));
+    })
+    .catch((err) => {
+      dispatch(camera_granted(false));
+    });
+
+  // To check if dispatching action is working
+  // setTimeout(() => dispatch(camera_granted(true)), 10000);
+
   return (
     <SafeAreaView style={styles.container}>
       <ScrollView
