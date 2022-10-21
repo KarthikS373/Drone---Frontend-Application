@@ -12,7 +12,7 @@ export default () => {
   return (
     <NavigationContainer>
       <StatusBar style="light" />
-      <Stack.Navigator initialRouteName="check">
+      <Stack.Navigator initialRouteName="home">
         <Stack.Screen
           name="home"
           component={HomeScreen}
@@ -25,6 +25,8 @@ export default () => {
           component={CheckScreen}
           options={{
             headerTitle: (props) => <HeaderTitle {...props} />,
+            headerBackVisible: true,
+            obscureBackground: true,
             headerStyle: {
               backgroundColor: "#181818",
             },

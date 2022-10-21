@@ -1,9 +1,9 @@
 // Reference link -> https://docs.expo.dev/versions/latest/sdk/network/
 
 import React, { useState, useEffect } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, View } from "react-native";
+import { StyleSheet } from "react-native";
 import NetInfo from "@react-native-community/netinfo";
-import styles from "../styles/sensors";
 
 export default () => {
   const [net, setNet] = useState(false);
@@ -21,3 +21,31 @@ export default () => {
     </View>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    paddingHorizontal: 10,
+  },
+  text: {
+    textAlign: "center",
+  },
+  buttonContainer: {
+    flexDirection: "row",
+    alignItems: "stretch",
+    marginTop: 15,
+  },
+  button: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "#eee",
+    padding: 10,
+  },
+  middleButton: {
+    borderLeftWidth: 1,
+    borderRightWidth: 1,
+    borderColor: "#ccc",
+  },
+});
