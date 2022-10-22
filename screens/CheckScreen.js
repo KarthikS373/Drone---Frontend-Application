@@ -24,16 +24,11 @@ export default (props) => {
             camera
               ? () => alert("Working")
               : () => {
-                console.log(camera)
-                  promptCameraPermission()
-                    .then((res) => {
-                      console.log(res);
-                      dispatch(camera_granted(true));
-                    })
-                    .catch((err) => {
-                      console.log(err);
-                      dispatch(camera_granted(false));
-                    });
+                  console.log(camera);
+                  promptCameraPermission().then((res) => {
+                    console.log(res);
+                    dispatch(camera_granted(res));
+                  });
                 }
           }
           result={camera}

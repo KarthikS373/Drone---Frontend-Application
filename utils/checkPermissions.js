@@ -13,3 +13,16 @@ export default checkPermission = (ID) =>
       }
     }
   });
+
+export const askPermissions = async (ID) => {
+  if (Platform.OS == "android") {
+    const permissionAndroid = await PermissionsAndroid.check(
+      `android.permission.${ID}`
+    );
+    if (permissionAndroid != PermissionsAndroid.RESULTS.granted) {
+      return false;
+    } else {
+      return true;
+    }
+  }
+};
