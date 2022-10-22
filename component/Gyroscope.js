@@ -19,7 +19,7 @@ export default function gyroscope() {
   };
 
   const _fast = () => {
-    Gyroscope.setUpdateInterval(16);
+    Gyroscope.setUpdateInterval(100);
   };
 
   const _subscribe = () => {

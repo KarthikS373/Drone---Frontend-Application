@@ -19,7 +19,7 @@ export default function accelerometer() {
   };
 
   const _fast = () => {
-    Accelerometer.setUpdateInterval(16);
+    Accelerometer.setUpdateInterval(100);
   };
 
   const _subscribe = () => {
