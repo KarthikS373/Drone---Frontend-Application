@@ -1,12 +1,13 @@
 // reference link : https://docs.expo.dev/versions/latest/sdk/gyroscope/
 
 import React, { useState, useEffect } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View,Button } from "react-native";
 import { Gyroscope } from "expo-sensors";
 import styles from "../styles/sensors";
 import { round } from "../utils/round";
 
-export default function gyroscope() {
+
+export default function gyroscope({navigation}) {
   const [data, setData] = useState({
     x: 0,
     y: 0,
@@ -64,6 +65,13 @@ export default function gyroscope() {
           <Text>Fast</Text>
         </TouchableOpacity>
       </View>
+      <View>
+      <Button
+        title="acclerometer"
+        onPress={() => navigation.navigate('accelerometer')}
+      />
+      </View>
+      
     </View>
   );
 }

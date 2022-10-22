@@ -2,9 +2,9 @@
 
 import { Camera, CameraType } from "expo-camera";
 import { useState } from "react";
-import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Button, StyleSheet, Text, TouchableOpacity, View,ScrollView } from "react-native";
 
-export default function camera() {
+export default function camera({navigation}) {
   const [type, setType] = useState(CameraType.back);
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const [Status, useStatus] = useState(false);
@@ -37,6 +37,7 @@ export default function camera() {
   }
 
   return (
+    <ScrollView>
     <View style={styles.container}>
       <Camera style={styles.camera} type={type}>
         <View style={styles.buttonContainer}>
@@ -50,6 +51,11 @@ export default function camera() {
         Permission: {permission.granted ? "true" : "false"}
       </Text>
     </View>
+    <Button
+        title="home"
+        onPress={() => navigation.navigate('home')}
+      />
+    </ScrollView>
   );
 }
 
