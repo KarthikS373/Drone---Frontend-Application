@@ -1,9 +1,9 @@
 // Reference link -> https://docs.expo.dev/versions/latest/sdk/filesystem/#storage-access-framework--android-only-
-import { View, Text } from "react-native";
+import { View, Text,Button } from "react-native";
 import React, { useEffect, useState } from "react";
 import * as FileSystem from "expo-file-system";
 
-const Storage = () => {
+const Storage = ({navigation}) => {
   const [diskAnalysis, setDiskAnalysis] = useState(null);
 
   useEffect(() => {
@@ -22,6 +22,10 @@ const Storage = () => {
       <Text style={{ textAlign: "center" }}>
         {diskAnalysis ? diskAnalysis : "Permission not granted"}
       </Text>
+      <Button
+        title="Proximity"
+        onPress={() => navigation.navigate('Proximity')}
+      />
     </View>
   );
 };

@@ -1,12 +1,12 @@
 // Reference link -> https://docs.expo.dev/versions/latest/sdk/accelerometer/
 
 import React, { useState, useEffect } from "react";
-import { Text, TouchableOpacity, View } from "react-native";
+import { Text, TouchableOpacity, View,Button } from "react-native";
 import { Accelerometer } from "expo-sensors";
 import styles from "../styles/sensors";
 import { round } from "../utils/round";
 
-export default function accelerometer() {
+export default function accelerometer({navigation}) {
   const [data, setData] = useState({
     x: 0,
     y: 0,
@@ -66,6 +66,10 @@ export default function accelerometer() {
           <Text>Fast</Text>
         </TouchableOpacity>
       </View>
+      <Button
+        title="Network"
+        onPress={() => navigation.navigate('Network')}
+      />
     </View>
   );
 }
