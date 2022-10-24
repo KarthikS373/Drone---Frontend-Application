@@ -12,10 +12,10 @@ export default function App() {
     <SafeAreaView style={styles.container}>
       <ScrollView>
         <Gryoscope />
-        <Accelerometer />
+        {/* <Accelerometer />
         <Network />
         <Camera />
-        <Storage />
+        <Storage /> */}
         {/* <Proximity /> */}
       </ScrollView>
     </SafeAreaView>
