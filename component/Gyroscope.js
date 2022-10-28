@@ -1,7 +1,7 @@
 // reference link : https://docs.expo.dev/versions/latest/sdk/gyroscope/
 
 import React, { useState, useEffect } from "react";
-import { Text, TouchableOpacity, View, Dimensions } from "react-native";
+import { Text, TouchableOpacity, View, Dimensions,Button } from "react-native";
 import { Gyroscope } from "expo-sensors";
 import styles from "../styles/sensors";
 import { round } from "../utils/round";
@@ -10,7 +10,7 @@ import { LineChart } from "react-native-chart-kit";
 // for graphing data
 let datasets = { x: [0], y: [0], z: [0] }
 
-export default function gyroscope() {
+export default function gyroscope({navigation}) {
   const [data, setData] = useState({
     x: 0,
     y: 0,
@@ -133,6 +133,10 @@ export default function gyroscope() {
             borderRadius: 16,
           }}
         />
+         <Button
+        title="acclerometer"
+        onPress={() => navigation.navigate('accelerometer')}
+      />
       </View>
     </View>
   );

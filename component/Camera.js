@@ -4,7 +4,7 @@ import { Camera, CameraType } from "expo-camera";
 import { useState } from "react";
 import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-export default function camera() {
+export default function camera({navigation}) {
   const [type, setType] = useState(CameraType.back);
   const [permission, requestPermission] = Camera.useCameraPermissions();
   const [Status, useStatus] = useState(false);
@@ -49,7 +49,12 @@ export default function camera() {
         {" "}
         Permission: {permission.granted ? "true" : "false"}
       </Text>
+      <Button
+       title="home"
+       onPress={() => navigation.navigate('home')}
+     />
     </View>
+    
   );
 }
 
@@ -59,7 +64,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   camera: {
-    flex: 1,
+    flex: 0.7,
   },
   buttonContainer: {
     flex: 1,
